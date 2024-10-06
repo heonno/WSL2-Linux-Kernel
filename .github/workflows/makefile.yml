@@ -19,3 +19,8 @@ jobs:
 
     - name: build
       run:  make KCONFIG_CONFIG=Microsoft/config-wsl -j$(nproc)
+
+    - name: List working directory contents
+        run: ls -alh /home/runner/work/
+
+
