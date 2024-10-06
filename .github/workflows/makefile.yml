@@ -14,12 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: sudo apt install build-essential flex bison dwarves libssl-dev libelf-dev cpio
-
-    - name: build
-      run:  make KCONFIG_CONFIG=Microsoft/config-wsl -j$(nproc)
-
     - name: List working directory contents
       run: ls -alh /home/runner/work/
 
