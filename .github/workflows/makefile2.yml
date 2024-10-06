@@ -17,3 +17,10 @@ jobs:
     - name: List working directory contents
       run: ls -alh /home/runner/work
 
+    - name: Upload build output
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifact
+        path: /home/runner/work/WSL2-Linux-Kernel/WSL2-Linux-Kernel/build/
+
+
