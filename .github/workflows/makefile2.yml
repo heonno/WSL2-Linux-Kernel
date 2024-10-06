@@ -1,0 +1,19 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "linux-msft-wsl-6.6.y" ]
+  pull_request:
+    branches: [ "linux-msft-wsl-6.6.y" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: List working directory contents
+      run: ls -alh /home/runner/work
+
