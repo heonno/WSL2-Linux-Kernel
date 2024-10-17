@@ -1,0 +1,29 @@
+name: Build WSL2 Kernel
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: sudo apt-get install -y build-essential flex bison libssl-dev libelf-dev bc
+
+    - name: Compile WSL2 Kernel
+      run: |
+        make KCONFIG_CONFIG=Microsoft/config-wsl
+        make -j$(nproc)
+
+    - name: Upload Kernel artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: wsl-kernel
+        path: ./arch/x86/boot/bzImage
